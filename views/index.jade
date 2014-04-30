@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p What would you like to remind yourself via SMS?
+  form(name="reminder", action="/reminders/add", method="post")
+      input(type="text", name="reminder", placeholder="Remind me to")
+      input(type="text", name="number", placeholder="SMS to")
+      input(type="submit", value="Create Reminder")

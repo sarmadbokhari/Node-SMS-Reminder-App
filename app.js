@@ -12,7 +12,7 @@ var reminders = require('./routes/reminders');
 var app = express();
 
 Firebase = require('firebase');
-userReminder = new Firebase(firebase_api_here);
+userReminder = new Firebase('https://sarmad-reminder-app.firebaseio.com/Reminders');
 
 
 // view engine setup

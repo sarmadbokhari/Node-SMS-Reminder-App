@@ -10,20 +10,45 @@ router.post('/add', function(req, res) {
   var remindText = req.body.reminder;
   var number = req.body.number;
 
-  userReminder.push({from: "user"});
+  // sending data to firebase here (see app.js for userReminder)
+  var servedReminder = userReminder.push({to_number: number, content: remindText});
+  // Get id of reminder:
+  var reminderID = servedReminder.name();
 
-  res.render('confirm');
+
+  res.render('confirm', {theID: reminderID});
   console.log('post received', remindText, number);
 
 });
 
 router.get('/update/:id', function(req, res){
-  var remRef = new Firebase(firebase_api_here + req.params.id);
+  var remRef = new Firebase("https://sarmad-reminder-app.firebaseio.com/Reminders/" + req.params.id);
+  // get reminder from firebase
+
+
   console.log(req.params.id);
   remRef.once('value', function(data){
-    console.log(data.val().text);
-    res.render("confirm");
+    if (!data.val()){
+      res.render("error",  { message: "Invalid Reminder", error: { stack: null, status: null}});
+    }
+    else {
+      console.log(data.val().text);
+      res.render("update", {theReminder: data.val()});
+    }
+
   });
+});
+
+router.post('/update', function(req, res){
+  var updatedText = req.body.reminder;
+  var updatedNumber = req.body.number;
+
+  var updateRem = new Firebase("https://sarmad-reminder-app.firebaseio.com/Reminders/" + req.body.id);
+
+  updateRem.update({content: updatedText, to_number: updatedNumber});
+
+  res.render('confirm', {theID: req.body.id});
+  console.log('post received', remindText, number);
 });
 
 // router.post('/update', function(req, res) {

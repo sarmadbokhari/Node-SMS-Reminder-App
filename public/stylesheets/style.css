@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,700);
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -46,4 +47,119 @@ a {
   -webkit-transform: translateY(3px);
   -moz-transform: translateY(3px);
   transform: translateY(3px);
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  border: 0;
+}
+body {
+  background: #19dd89;
+}
+.wrap {
+  max-width: 900px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 40px 0px 40px 0px;
+}
+.wrap h1 {
+  font-size: 5em;
+  font-family: "Gentium Book Basic";
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -3px;
+}
+.wrap p {
+  font-family: "Gentium Book Basic";
+  font-size: 1.5em;
+  color: #fff;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+}
+.fa {
+  margin-right: 10px;
+}
+.mainWrap {
+  max-width: 900px;
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+.name,
+.number {
+  width: 49%;
+  border: 0;
+  background: #fff;
+  padding: 20px;
+  font-size: 1.2em;
+  font-family: "Gentium Book Basic";
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  color: #111;
+}
+::-webkit-input-placeholder {
+  color: #696969;
+}
+:-moz-placeholder {
+  color: #696969;
+}
+::-moz-placeholder {
+  color: #696969;
+}
+:-ms-input-placeholder {
+  color: #696969;
+}
+.name {
+  float: left;
+}
+.number {
+  float: right;
+}
+.mainArea {
+  width: 100%;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  font-size: 1.4em;
+  margin-top: 20px;
+  padding: 20px;
+  font-family: "Gentium Book Basic";
+  color: #111;
+  height: 400px;
+  resize: none;
+}
+.bigBtn {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2em;
+  font-family: "Gentium Book Basic";
+  background: #ffc60d;
+  color: #fff;
+  cursor: pointer;
+}
+/* Landscape mobile & down */
+@media (max-width: 30em) {
+  .wrap h1 {
+    font-size: 2.3em;
+    letter-spacing: 0;
+  }
+  .wrap p {
+    font-size: 1.1em;
+    line-height: 1.4em;
+  }
+  .name,
+  .number {
+    width: 100%;
+  }
+  .number {
+    margin-top: 20px;
+  }
+  .bigBtn {
+    font-size: 1.3em;
+  }
 }

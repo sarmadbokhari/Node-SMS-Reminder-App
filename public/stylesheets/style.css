@@ -6,39 +6,43 @@ a {
   color: #00B7FF;
 }
 .button {
-  background-image: -webkit-linear-gradient(top, #ffa202 0%, #ff7002 100%);
-  background-image: -moz-linear-gradient(top, #ffa202 0%, #ff7002 100%);
-  background-image: -ms-linear-gradient(top, #ffa202 0%, #ff7002 100%);
-  background-image: -o-linear-gradient(top, #ffa202 0%, #ff7002 100%);
-  background-image: linear-gradient(top, #ffa202 0%, #ff7002 100%);
-  -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.57) inset, 0px 20px 0px 0px rgba(255, 255, 255, 0.18) inset, 0px 5px 0px 0px #d56000, 0px -1px 0px 0px rgba(255, 255, 255, 0.07) inset, 0px 5px 2px 0px rgba(0, 0, 0, 0.46);
-  -moz-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.57) inset, 0px 20px 0px 0px rgba(255, 255, 255, 0.18) inset, 0px 5px 0px 0px #d56000, 0px -1px 0px 0px rgba(255, 255, 255, 0.07) inset, 0px 5px 2px 0px rgba(0, 0, 0, 0.46);
-  box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.57) inset, 0px 20px 0px 0px rgba(255, 255, 255, 0.18) inset, 0px 5px 0px 0px #d56000, 0px -1px 0px 0px rgba(255, 255, 255, 0.07) inset, 0px 5px 2px 0px rgba(0, 0, 0, 0.46);
-  border: solid 1px #ff7802;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  padding: 10px 30px 10px 30px;
   display: inline-block;
-  -webkit-transition: all 0.1s linear;
-  -moz-transition: all 0.1s linear;
-  transition: all 0.1s linear;
-  font-size: 15px;
+  background: #1188f0;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2e8cff), color-stop(100%, #1188f0));
+  background: -moz-linear-gradient(center top, #2e8cff 0%, #1188f0 100%);
+  -webkit-box-shadow: 0px 5px 0px 0px #006391, 0px -1px 0px 0px #1c95ff inset;
+  -moz-box-shadow: 0px 5px 0px 0px #006391, 0px -1px 0px 0px #1c95ff inset;
+  box-shadow: 0px 5px 0px 0px #006391, 0px -1px 0px 0px #1c95ff inset;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: background-color 0.2s linear;
+  -moz-transition: background-color 0.2s linear;
+  -o-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+  text-shadow: 0px 1px 0px #006ac7;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  text-align: center;
   color: #ffffff;
   font-weight: bold;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.53);
+}
+.button:focus {
+  outline: 0;
 }
 .button:hover {
-  background-image: -webkit-linear-gradient(top, #ffaf03 0%, #ff7002 100%);
-  background-image: -moz-linear-gradient(top, #ffaf03 0%, #ff7002 100%);
-  background-image: -ms-linear-gradient(top, #ffaf03 0%, #ff7002 100%);
-  background-image: -o-linear-gradient(top, #ffaf03 0%, #ff7002 100%);
-  background-image: linear-gradient(top, #ffaf03 0%, #ff7002 100%);
+  background: #1995fa;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2e8cff), color-stop(100%, #2e8cff));
+  background: -moz-linear-gradient(center top, #2e8cff 0%, #2e8cff 100%);
 }
 .button:active {
-  -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.57) inset, 0px 20px 0px 0px rgba(255, 255, 255, 0.18) inset, 0px 1px 0px 0px #d56000, 0px -1px 0px 0px rgba(255, 255, 255, 0.07) inset, 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.57) inset, 0px 20px 0px 0px rgba(255, 255, 255, 0.18) inset, 0px 1px 0px 0px #d56000, 0px -1px 0px 0px rgba(255, 255, 255, 0.07) inset, 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.57) inset, 0px 20px 0px 0px rgba(255, 255, 255, 0.18) inset, 0px 1px 0px 0px #d56000, 0px -1px 0px 0px rgba(255, 255, 255, 0.07) inset, 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 2px 0px 0px #006391, 0px -1px 0px 0px #1491ff inset;
+  -moz-box-shadow: 0px 2px 0px 0px #006391, 0px -1px 0px 0px #1491ff inset;
+  box-shadow: 0px 2px 0px 0px #006391, 0px -1px 0px 0px #1491ff inset;
+  -webkit-transition: background-position 0.3s linear;
+  -moz-transition: background-position 0.3s linear;
+  -o-transition: background-position 0.3s linear;
+  transition: background-position 0.3s linear;
   -webkit-transform: translateY(3px);
   -moz-transform: translateY(3px);
   transform: translateY(3px);

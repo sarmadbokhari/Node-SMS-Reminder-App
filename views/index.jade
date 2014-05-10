@@ -3,10 +3,12 @@ extends layout
 block content
   div(class="wrap")
     h1=title
-    p An online node & express SMS app
+    p A Firebase, Node & Express SMS reminder web app
   br
-  form(action="/reminder/add" method="post" class="mainWrap")
-    input(placeholder="Your name" type="text" class="name" name="sender_name")
-    input(placeholder="Send SMS to" type="tel" class="number" name="recipient_number")
+  form(name="reminder" action="/reminders/add" method="post" class="mainWrap")
+    input(placeholder="Your name" type="text" class="name" name="sender")
+    input(placeholder="Send SMS to" type="tel" class="number" name="number")
     textarea(placeholder="Enter your message" class="mainArea" name="reminder")
+    br
+    br
     input(type="submit", value="Create Reminder", class="button")

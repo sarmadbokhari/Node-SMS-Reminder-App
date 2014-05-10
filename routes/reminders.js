@@ -9,15 +9,16 @@ router.get('/', function(req, res) {
 router.post('/add', function(req, res) {
   var remindText = req.body.reminder;
   var number = req.body.number;
+  var sender = req.body.sender;
 
   // sending data to firebase here (see app.js for userReminder)
-  var servedReminder = userReminder.push({to_number: number, content: remindText});
+  var servedReminder = userReminder.push({sender: sender, to_number: number, content: remindText});
   // Get id of reminder:
   var reminderID = servedReminder.name();
 
 
   res.render('confirm', {theID: reminderID});
-  console.log('post received', remindText, number);
+  console.log('post received', sender, number, remindText);
 
 });
 

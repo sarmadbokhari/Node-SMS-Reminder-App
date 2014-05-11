@@ -2,8 +2,8 @@ extends layout
 
 block content
   h1 Edit your reminder:
-  form(name="reminder", action="/reminders/update", method="post")
-        input(type="text", name="reminder", value=theReminder.reminderText )
-        input(type="text", name="number", value=theReminder.to_number )
-        input(type="submit", value="Create Reminder")
+  form(name="reminder", action="/reminders/update", method="post", class="mainWrap")
+        input(type="text", name="reminder", value=theReminder.reminderText, class="mainArea")
+        input(type="text", name="number", value=theReminder.to_number, class="number")
+        input(type="submit", value="Update Reminder", class="button")
         input(type="text", name="id", value=theReminder.name, hidden="hidden")

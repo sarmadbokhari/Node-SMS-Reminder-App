@@ -2,14 +2,6 @@ extends layout
 
 block content
   h1 Here's your reminder:
-  p.message
   a(href='/reminders/update/' + theID) Edit the reminder
 
-  script.
-    var url = "https://sarmad-reminder-app.firebaseio.com/Reminders.json";
-    $(document).ready(function(){
-      $.get(url, function(data){
-        var msg = $(data.theID).text();
-        $(".message").html(msg);
-      });
-    });
+  p= "'" + content + "'" + " to " + number

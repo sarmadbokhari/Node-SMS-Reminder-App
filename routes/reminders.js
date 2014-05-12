@@ -17,7 +17,7 @@ router.post('/add', function(req, res) {
   var reminderID = servedReminder.name();
 
 
-  res.render('confirm', {theID: reminderID});
+  res.render('confirm', {theID: reminderID, content: remindText, number: number});
   console.log('post received', sender, number, remindText);
 
 });
@@ -34,7 +34,7 @@ router.get('/update/:id', function(req, res){
     }
     else {
       console.log(data.val().text);
-      res.render("update", {theReminder: data.val()});
+      res.render("update", {theReminder: data.val(), theID: req.params.id});
     }
 
   });
@@ -48,7 +48,7 @@ router.post('/update', function(req, res){
 
   updateRem.update({content: updatedText, to_number: updatedNumber});
 
-  res.render('confirm', {theID: req.body.id});
+  res.render('confirm', {content: updatedText, number: updatedNumber, theID: req.body.id});
   console.log('post received', remindText, number);
 });
 

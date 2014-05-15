@@ -92,7 +92,9 @@ body {
   padding-bottom: 100px;
 }
 .name,
-.number {
+.number,
+.date,
+.time {
   width: 49%;
   border: 0;
   background: #fff;
@@ -114,10 +116,12 @@ body {
 :-ms-input-placeholder {
   color: #696969;
 }
-.name {
+.name,
+.date {
   float: left;
 }
-.number {
+.number,
+.time {
   float: right;
 }
 .mainArea {

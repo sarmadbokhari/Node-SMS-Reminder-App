@@ -8,7 +8,19 @@ block content
   form(name="reminder" action="/reminders/add" method="post" class="mainWrap")
     input(placeholder="Your name" type="text" class="name" name="sender")
     input(placeholder="Send SMS to" type="tel" class="number" name="number")
+
     textarea(placeholder="Enter your message" class="mainArea" name="reminder")
+
     br
     br
+
+    input(type="date" class="date" name="date")
+    input(type="time" class="time" name="time")
+
+    br
+    br
+    br
+    br
+    br
+
     input(type="submit", value="Create Reminder", class="button")

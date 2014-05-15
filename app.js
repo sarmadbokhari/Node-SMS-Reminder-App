@@ -64,3 +64,14 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+// Cron functionality here:
+var CronJob = require('cron').CronJob;
+var job = new CronJob('* * * * * *', function(){
+    console.log('this ran');
+},
+null,
+true);
+
+// only needed if job.start set to false above
+// job.start();

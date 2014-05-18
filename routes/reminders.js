@@ -11,17 +11,17 @@ router.post('/add', function(req, res) {
   var number = req.body.number;
   var sender = req.body.sender;
   var date = req.body.date;
-  var time = req.body.time;
-  var theTime = new Date("'" + date + " " + time + "'");
+  var theTime = req.body.time;
+  var time = moment((date + " " + theTime)).unix();
 
   // sending data to firebase here (see app.js for userReminder)
-  var servedReminder = userReminder.push({sender: sender, to_number: number, content: remindText, theTime: theTime});
+  var servedReminder = userReminder.push({sender: sender, to_number: number, content: remindText, time: time});
   // Get id of reminder:
   var reminderID = servedReminder.name();
 
 
-  console.log('post received', sender, number, remindText, theTime);
-  res.render('confirm', {theID: reminderID, content: remindText, number: number, theTime: theTime});
+  console.log('post received', sender, number, remindText, time);
+  res.render('confirm', {theID: reminderID, content: remindText, number: number, time: time});
 
 });
 
@@ -47,16 +47,16 @@ router.post('/update', function(req, res){
   var updatedText = req.body.reminder;
   var updatedNumber = req.body.number;
   var date = req.body.date;
-  var time = req.body.time;
-  var theTime = new Date("'" + date + " " + time + "'");
+  var theTime = req.body.time;
+  var time = new Date("'" + date + " " + theTime + "'");
 
   var updateRem = new Firebase("https://sarmad-reminder-app.firebaseio.com/Reminders/" + req.body.id);
 
-  updateRem.update({content: updatedText, to_number: updatedNumber, theTime: theTime});
+  updateRem.update({content: updatedText, to_number: updatedNumber, time: time});
 
-  console.log('post received', updatedText, updatedNumber, theTime);
+  console.log('post received', updatedText, updatedNumber, time);
 
-  res.render('confirm', {content: updatedText, number: updatedNumber, theID: req.body.id, theTime: theTime});
+  res.render('confirm', {content: updatedText, number: updatedNumber, theID: req.body.id, time: time});
 });
 
 // router.post('/update', function(req, res) {

@@ -4,6 +4,8 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+moment = require('moment');
+moment().format();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -69,27 +71,22 @@ module.exports = app;
 var CronJob = require('cron').CronJob;
 // every 30 min === (0,30 * * * *)
 // every min === (0 * * * * *)
-var job = new CronJob('0 * * * * *', function(){
+var job = new CronJob('* * * * * *', function(){
     console.log('this is running');
 
     userReminder.on('value', function(snapshot){
         if (snapshot.val() === null){
             console.log("No info exists in database, returning null");
         } else {
-            var theTimeNow = Date.now();
+            var now = moment().unix();
+            var janFirst = moment("Jan 1, 2014").unix();
 
-            var theReminders = Object.keys(snapshot.val()); //Array with all reminders
-            for (var i = 0; i < theReminders.length; i++){
-                var theDate = theReminders[i]['date'];
-                var theTime = theReminders[i]['time'];
-                var timeObj = new Date("'" + theDate + " " + theTime + "'");
-
-                if ((theTimeNow - timeObj) < 0){
-                   console.log(theReminders[i]['content'] + " SENT FROM " + theReminders[i]['sender']);
-                   // TWILIO CALL HERE
-                   theReminder[i]['sent'] = "true";
-                }
-            }
+            userReminder
+            .startAt(janFirst)
+            .endAt(now)
+            .once('value', function(snapshot){
+                console.log(snapshot.val());
+            });
         }
     });
 },

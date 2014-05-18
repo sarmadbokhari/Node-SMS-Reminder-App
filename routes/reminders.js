@@ -12,15 +12,16 @@ router.post('/add', function(req, res) {
   var sender = req.body.sender;
   var date = req.body.date;
   var time = req.body.time;
+  var theTime = new Date("'" + date + " " + time + "'");
 
   // sending data to firebase here (see app.js for userReminder)
-  var servedReminder = userReminder.push({sender: sender, to_number: number, content: remindText, date: date, time: time});
+  var servedReminder = userReminder.push({sender: sender, to_number: number, content: remindText, theTime: theTime});
   // Get id of reminder:
   var reminderID = servedReminder.name();
 
 
-  console.log('post received', sender, number, remindText, date, time);
-  res.render('confirm', {theID: reminderID, content: remindText, number: number, date: date, time: time});
+  console.log('post received', sender, number, remindText, theTime);
+  res.render('confirm', {theID: reminderID, content: remindText, number: number, theTime: theTime});
 
 });
 
@@ -47,14 +48,15 @@ router.post('/update', function(req, res){
   var updatedNumber = req.body.number;
   var date = req.body.date;
   var time = req.body.time;
+  var theTime = new Date("'" + date + " " + time + "'");
 
   var updateRem = new Firebase("https://sarmad-reminder-app.firebaseio.com/Reminders/" + req.body.id);
 
-  updateRem.update({content: updatedText, to_number: updatedNumber, date: date, time: time});
+  updateRem.update({content: updatedText, to_number: updatedNumber, theTime: theTime});
 
-  console.log('post received', updatedText, updatedNumber, date, time);
+  console.log('post received', updatedText, updatedNumber, theTime);
 
-  res.render('confirm', {content: updatedText, number: updatedNumber, theID: req.body.id, date: date, time: time});
+  res.render('confirm', {content: updatedText, number: updatedNumber, theID: req.body.id, theTime: theTime});
 });
 
 // router.post('/update', function(req, res) {

@@ -68,6 +68,7 @@ module.exports = app;
 // Time Cron functionality here:
 var CronJob = require('cron').CronJob;
 // every 30 min === (0,30 * * * *)
+// every min === (0 * * * * *)
 var job = new CronJob('0 * * * * *', function(){
     console.log('this is running');
 
@@ -90,9 +91,7 @@ var job = new CronJob('0 * * * * *', function(){
                 }
             }
         }
-    }
-
-});
+    });
 },
 null,
 true);

@@ -65,10 +65,34 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-// Cron functionality here:
+// Time Cron functionality here:
 var CronJob = require('cron').CronJob;
+// every 30 min === (0,30 * * * *)
 var job = new CronJob('0 * * * * *', function(){
-    console.log('this ran');
+    console.log('this is running');
+
+    userReminder.on('value', function(snapshot){
+        if (snapshot.val() === null){
+            console.log("No info exists in database, returning null");
+        } else {
+            var theTimeNow = Date.now();
+
+            var theReminders = Object.keys(snapshot.val()); //Array with all reminders
+            for (var i = 0; i < theReminders.length; i++){
+                var theDate = theReminders[i]['date'];
+                var theTime = theReminders[i]['time'];
+                var timeObj = new Date("'" + theDate + " " + theTime + "'");
+
+                if ((theTimeNow - timeObj) < 0){
+                   console.log(theReminders[i]['content'] + " SENT FROM " + theReminders[i]['sender']);
+                   // TWILIO CALL HERE
+                   theReminder[i]['sent'] = "true";
+                }
+            }
+        }
+    }
+
+});
 },
 null,
 true);

@@ -67,7 +67,7 @@ module.exports = app;
 
 // Cron functionality here:
 var CronJob = require('cron').CronJob;
-var job = new CronJob('* * * * * *', function(){
+var job = new CronJob('0 * * * * *', function(){
     console.log('this ran');
 },
 null,

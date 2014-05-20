@@ -12,7 +12,7 @@ router.post('/add', function(req, res) {
   var sender = req.body.sender;
   var date = req.body.date;
   var theTime = req.body.time;
-  var time = moment((date + " " + theTime)).unix();
+  var time = moment((date + " " + theTime)).valueOf();
 
   // sending data to firebase here (see app.js for userReminder)
   var servedReminder = userReminder.push({sender: sender, to_number: number, content: remindText, time: time});
@@ -48,7 +48,7 @@ router.post('/update', function(req, res){
   var updatedNumber = req.body.number;
   var date = req.body.date;
   var theTime = req.body.time;
-  var time = new Date("'" + date + " " + theTime + "'");
+  var time = moment((date + " " + theTime)).valueOf();
 
   var updateRem = new Firebase("https://sarmad-reminder-app.firebaseio.com/Reminders/" + req.body.id);
 

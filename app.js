@@ -78,14 +78,13 @@ var job = new CronJob('* * * * * *', function(){
         if (snapshot.val() === null){
             console.log("No info exists in database, returning null");
         } else {
-            var now = moment().unix();
-            var janFirst = moment("Jan 1, 2014").unix();
+            var now = moment().valueOf();
+            var janFirst = moment("Jan 1 2014").valueOf();
 
-            userReminder
-            .startAt(janFirst)
-            .endAt(now)
-            .once('value', function(snapshot){
-                console.log(snapshot.val());
+            console.log("this is the time now: " + now);
+
+            userReminder.endAt(now).on('child_added', function(snap){
+                console.log(snap.val());
             });
         }
     });

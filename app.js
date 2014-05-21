@@ -72,6 +72,8 @@ var CronJob = require('cron').CronJob;
 var job = new CronJob('* * * * * *', function(){
     console.log('this is running');
 
+    pg.connect(conString, function())
+
     userReminder.on('value', function(snapshot){
         if (snapshot.val() === null){
             console.log("No info exists in database, returning null");

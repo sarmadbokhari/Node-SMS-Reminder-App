@@ -6,16 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 moment = require('moment');
 moment().format();
+pg = require('pg');
+conString = "localhost";
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var reminders = require('./routes/reminders');
 
 var app = express();
-
-Firebase = require('firebase');
-userReminder = new Firebase('https://sarmad-reminder-app.firebaseio.com/Reminders');
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -78,14 +76,12 @@ var job = new CronJob('* * * * * *', function(){
         if (snapshot.val() === null){
             console.log("No info exists in database, returning null");
         } else {
-            var now = parseInt((moment().valueOf())/1000);
+            var now = parseInt(moment().valueOf())/1000;
 
             console.log("this is the time now: " + now);
 
             userReminder.endAt(now).on('child_added', function(snap){
-                console.log(snap.val());
-
-
+                console.log(snap.val()); //PRINT THE MSG
             });
         }
     });

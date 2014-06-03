@@ -72,21 +72,21 @@ var CronJob = require('cron').CronJob;
 var job = new CronJob('* * * * * *', function(){
     console.log('this is running');
 
-    pg.connect(conString, function())
+    // pg.connect(conString, function())
 
-    userReminder.on('value', function(snapshot){
-        if (snapshot.val() === null){
-            console.log("No info exists in database, returning null");
-        } else {
-            var now = parseInt(moment().valueOf())/1000;
+    // userReminder.on('value', function(snapshot){
+    //     if (snapshot.val() === null){
+    //         console.log("No info exists in database, returning null");
+    //     } else {
+    //         var now = parseInt(moment().valueOf())/1000;
 
-            console.log("this is the time now: " + now);
+    //         console.log("this is the time now: " + now);
 
-            userReminder.endAt(now).on('child_added', function(snap){
-                console.log(snap.val()); //PRINT THE MSG
-            });
-        }
-    });
+    //         userReminder.endAt(now).on('child_added', function(snap){
+    //             console.log(snap.val()); //PRINT THE MSG
+    //         });
+    //     }
+    // });
 },
 null,
 true);

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var ReminderSchema = require('../schemas/reminder');
 
 /* GET reminders page. */
 router.get('/', function(req, res) {
@@ -15,10 +16,17 @@ router.post('/add', function(req, res) {
   var time = moment((date + " " + theTime)).valueOf();
 
   // sending data to firebase here (see app.js for userReminder)
-  var servedReminder = userReminder.push({sender: sender, to_number: number, content: remindText, time: time});
+  // var servedReminder = userReminder.push({sender: sender, to_number: number, content: remindText, time: time});
   // Get id of reminder:
-  var reminderID = servedReminder.name();
+  // var reminderID = servedReminder.name(); // NEED TO REDO THIS WITH MONGOOSE
 
+  //SAVE TO DB:
+  var record = new ReminderSchema({
+    sender: sender,
+    number: number,
+    message: remindText,
+    time: time
+  });
 
   console.log('post received', sender, number, remindText, time);
   res.render('confirm', {theID: reminderID, content: remindText, number: number, time: time});

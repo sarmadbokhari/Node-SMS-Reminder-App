@@ -28,6 +28,15 @@ router.post('/add', function(req, res) {
     time: time
   });
 
+  record.save(function(err){
+    if (err) {
+      console.log(err);
+      res.status(500).json({status: 'failure'});
+    } else {
+      res.json({status: 'success'});
+    }
+  });
+
   console.log('post received', sender, number, remindText, time);
   res.render('confirm', {theID: reminderID, content: remindText, number: number, time: time});
 

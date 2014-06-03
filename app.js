@@ -6,8 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 moment = require('moment');
 moment().format();
-pg = require('pg');
-conString = "localhost";
+var db = require('./db');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
